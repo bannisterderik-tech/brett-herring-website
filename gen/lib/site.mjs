@@ -284,10 +284,10 @@ footer a:hover{color:var(--green-l)}
 .note{background:var(--green-wash);border-left:4px solid var(--green);padding:1rem 1.2rem;
   border-radius:0 var(--r) var(--r) 0;font-size:.94rem;color:var(--ink2);margin:1.4rem 0}
 .note b{color:var(--ink)}
-.rv{opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .4s ease}
-.rv.on{opacity:1;transform:none}
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .4s ease}
+.js .rv.on{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none}
+  .js .rv{opacity:1;transform:none;transition:none}
   .hero-bg img,.ticker-track{animation:none}
 }
 `;
@@ -369,6 +369,7 @@ export function page({ path, title, desc, ogImg = 'images/hero-lane-county.jpg',
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${R}assets/style.css?v=${ASSET_V}">
+<script>document.documentElement.className='js'</script>
 ${schemas}
 </head>
 <body>
