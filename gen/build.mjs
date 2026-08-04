@@ -11,6 +11,7 @@ import { locations } from './data/locations.mjs';
 import { services } from './data/services.mjs';
 import { guides } from './data/guides.mjs';
 import { journal } from './data/journal.mjs';
+import { attrs, comboSections } from './data/attrs.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'docs');
@@ -39,10 +40,10 @@ write('/', page({
   path: '/', active: 'home',
   title: 'Brett Herring | Springfield & Lane County Oregon Real Estate Agent',
   desc: `Real estate in Springfield, Thurston, Pleasant Hill and all of Lane County, Oregon. Rural acreage, first-time buyers, relocation. The Operative Group at Real Broker, LLC. Call or text ${PHONE}.`,
-  ogImg: 'images/mckenzie-river-2.jpg',
+  ogImg: 'images/gen-lane-county-wide.jpg',
   body: `
 <header class="hero">
-  <div class="hero-bg"><img src="images/mckenzie-river-2.jpg" alt="The McKenzie River valley east of Springfield, Oregon" fetchpriority="high"></div>
+  <div class="hero-bg"><img src="images/gen-lane-county-wide.jpg" alt="Willamette Valley farm country, a small town and the Cascade foothills, Lane County, Oregon" fetchpriority="high"></div>
   <div class="wrap hero-in">
     <div class="eyebrow">Springfield · Thurston · Pleasant Hill · Lane County</div>
     <h1>Straight answers about <em>Lane County</em> real estate.</h1>
@@ -403,7 +404,13 @@ for (const l of locations) {
   ${crumbs('../../', [['Home', 'index.html'], ['Areas', 'areas/index.html'], [l.name, '']])}
   <div class="eyebrow">${esc(l.name)}, Oregon${l.rank ? ` · Priority Area No. ${l.rank}` : ''}</div>
   <h1>${esc(l.name)}: <em>${esc(l.tagline.toLowerCase())}</em></h1>
-  <p>${esc(l.character)}</p>
+  <p>${esc(trunc(clean(l.character), 300))}</p>
+  <div class="facts">
+    <div><b>${l.zips.join(' · ')}</b><span>ZIP</span></div>
+    <div><b>${esc(({ intown: 'In town', edge: 'Town edge', rural: 'Rural', remote: 'Remote' })[attrs[l.slug]?.setting] || 'Lane County')}</b><span>Setting</span></div>
+    <div><b>${esc(attrs[l.slug]?.septic === true ? 'Well &amp; septic' : attrs[l.slug]?.septic === false ? 'City services' : 'Mixed')}</b><span>Water &amp; waste</span></div>
+    <div><b>${esc(trunc(clean(attrs[l.slug]?.district || 'Lane County'), 34))}</b><span>Schools</span></div>
+  </div>
 </div></div>
 
 <section><div class="wrap split">
@@ -459,6 +466,8 @@ ${faqBlock(areaFaqs, `${l.name} questions`)}
 
   // ---------------- area × service combo pages
   for (const s of services) {
+    const a = attrs[l.slug] || attrs.springfield;
+    const sections = comboSections(l, s, a);
     const seed = l.slug + s.slug;
     const opener = pick([
       `Looking to ${s.verb} in ${l.name}? Start with someone who has actually been down these roads.`,
@@ -466,11 +475,7 @@ ${faqBlock(areaFaqs, `${l.name} questions`)}
       `Plenty of agents will work ${l.name}. Fewer of them can tell you what makes ${s.short.toLowerCase()} different in this specific part of Lane County.`,
       `If you are trying to ${s.verb} around ${l.name}, local knowledge is not a bonus. It is most of the job.`,
     ], seed);
-    const bridge = pick([
-      `Here is what matters locally. ${clean(l.propertyNotes)}`,
-      `The ground truth in ${l.name}: ${clean(l.propertyNotes)}`,
-      `What that means on the ground here: ${clean(l.propertyNotes)}`,
-    ], seed + 'b');
+    const bridge = `${clean(l.propertyNotes)}`;
     const closer = pick([
       `Layer the specialty on top of that. ${clean(s.intro)}`,
       `Then there is the ${s.short.toLowerCase()} side of it. ${clean(s.intro)}`,
@@ -510,14 +515,26 @@ ${faqBlock(areaFaqs, `${l.name} questions`)}
   </div>
 </div></section>
 <section class="bone2"><div class="wrap">
-  <div class="sec-head rv"><div class="eyebrow">About the area</div><h2>${esc(l.name)}, <em>briefly.</em></h2><p>${esc(trunc(clean(l.character), 320))}</p></div>
-  <table class="meta rv" style="max-width:700px">
-    <tr><td>ZIP codes</td><td>${l.zips.join(', ')}</td></tr>
-    <tr><td>Known for</td><td>${l.landmarks.slice(0, 4).map(esc).join(' · ')}</td></tr>
-    <tr><td>Schools</td><td>${esc(trunc(clean(l.schools), 190))}</td></tr>
-    <tr><td>Living here</td><td>${esc(trunc(clean(l.lifestyle), 230))}</td></tr>
-  </table>
-  <p class="rv"><a href="../index.html"><b>Full ${esc(l.name)} area guide →</b></a></p>
+  <div class="sec-head rv"><div class="eyebrow">${esc(l.name)} specifics</div><h2>What changes <em>here.</em></h2>
+  <p>Generic advice is worthless on a decision this size. This is what ${esc(s.short.toLowerCase())} actually involves in ${esc(l.name)}, as opposed to anywhere else in the county.</p></div>
+  <div class="prose rv">
+    ${sections.map((sec) => `<h3>${esc(sec.h)}</h3><p>${esc(sec.p)}</p>`).join('\n')}
+  </div>
+</div></section>
+<section><div class="wrap split">
+  <div class="rv">
+    <div class="eyebrow">The area itself</div>
+    <h2>${esc(l.name)}, <em>briefly.</em></h2>
+    <p>${esc(trunc(clean(l.character), 340))}</p>
+    <table class="meta">
+      <tr><td>ZIP codes</td><td>${l.zips.join(', ')}</td></tr>
+      <tr><td>Known for</td><td>${l.landmarks.slice(0, 4).map(esc).join(' · ')}</td></tr>
+      <tr><td>Schools</td><td>${esc(trunc(clean(l.schools), 190))}</td></tr>
+      <tr><td>Getting to town</td><td>${esc(a.commute.charAt(0).toUpperCase() + a.commute.slice(1))}</td></tr>
+    </table>
+    <p><a href="../index.html"><b>Full ${esc(l.name)} area guide →</b></a></p>
+  </div>
+  <div class="rv"><figure class="shot wide"><img src="../../../images/${IMG(l)}" alt="${esc(l.name)}, Lane County, Oregon" loading="lazy"><figcaption>${esc(l.name)}, Lane County</figcaption></figure></div>
 </div></section>
 ${faqBlock(comboFaqs, `${s.short} in ${l.name}: FAQ`)}
 <section><div class="wrap">
