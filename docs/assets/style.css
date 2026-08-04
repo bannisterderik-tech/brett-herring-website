@@ -130,7 +130,9 @@ section{padding:clamp(2.8rem,5.5vw,4.6rem) 0;position:relative}
   letter-spacing:.1em;padding:.32rem .7rem;text-transform:uppercase}
 
 /* ---- split ---- */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.8rem,4.5vw,3.8rem);align-items:center}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.8rem,4.5vw,3.8rem);align-items:start}
+.split>.rv>.shot{position:sticky;top:5.5rem}
+@media(max-width:900px){.split>.rv>.shot{position:static}}
 @media(max-width:900px){.split{grid-template-columns:1fr}}
 .split.wide-l{grid-template-columns:6fr 5fr}
 @media(max-width:900px){.split.wide-l{grid-template-columns:1fr}}

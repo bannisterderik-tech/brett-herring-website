@@ -30,6 +30,11 @@ const hash = (s) => [...s].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7)
 const pick = (arr, seed) => arr[hash(seed) % arr.length];
 const trunc = (s, n) => (s.length <= n ? s : s.slice(0, s.lastIndexOf(' ', n)) + '…');
 const clean = (s) => String(s).replace(/\s+/g, ' ').trim();
+// Trim to whole sentences so an intro never ends mid-thought.
+const sentences = (s, n) => {
+  const parts = String(s).match(/[^.!?]+[.!?]+/g) || [s];
+  return parts.slice(0, n).join(' ').trim();
+};
 
 const ranked = locations.filter((l) => l.rank).sort((a, b) => a.rank - b.rank);
 const rest = locations.filter((l) => !l.rank);
@@ -404,7 +409,7 @@ for (const l of locations) {
   ${crumbs('../../', [['Home', 'index.html'], ['Areas', 'areas/index.html'], [l.name, '']])}
   <div class="eyebrow">${esc(l.name)}, Oregon${l.rank ? ` · Priority Area No. ${l.rank}` : ''}</div>
   <h1>${esc(l.name)}: <em>${esc(l.tagline.toLowerCase())}</em></h1>
-  <p>${esc(trunc(clean(l.character), 300))}</p>
+  <p>${esc(sentences(clean(l.character), 2))}</p>
   <div class="facts">
     <div><b>${l.zips.join(' · ')}</b><span>ZIP</span></div>
     <div><b>${esc(({ intown: 'In town', edge: 'Town edge', rural: 'Rural', remote: 'Remote' })[attrs[l.slug]?.setting] || 'Lane County')}</b><span>Setting</span></div>
