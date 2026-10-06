@@ -45,10 +45,10 @@ write('/', page({
   path: '/', active: 'home',
   title: 'Brett Herring | Springfield & Lane County Oregon Real Estate Agent',
   desc: `Real estate in Springfield, Thurston, Pleasant Hill and all of Lane County, Oregon. Rural acreage, first-time buyers, relocation. The Operative Group at Real Broker, LLC. Call or text ${PHONE}.`,
-  ogImg: 'images/gen-lane-county-wide.jpg',
+  ogImg: 'images/brett-sign-subdivision.jpg',
   body: `
 <header class="hero">
-  <div class="hero-bg"><img src="images/gen-lane-county-wide.jpg" alt="Willamette Valley farm country, a small town and the Cascade foothills, Lane County, Oregon" fetchpriority="high"></div>
+  <div class="hero-bg"><img src="images/brett-sign-subdivision.jpg" alt="Brett Herring beside his for sale sign at a Lane County, Oregon home" fetchpriority="high"></div>
   <div class="wrap hero-in">
     <div class="eyebrow">Springfield · Thurston · Pleasant Hill · Lane County</div>
     <h1>Straight answers about <em>Lane County</em> real estate.</h1>
@@ -62,18 +62,21 @@ write('/', page({
 </header>
 ${ticker(['Thurston', 'Pleasant Hill', 'Springfield', 'Rural & Acreage', 'First-Time Buyers', 'Relocation', 'Lane County', 'The Operative Group'])}
 
-<section><div class="wrap split wide-l">
+<section><div class="wrap split">
   <div class="rv">
     <div class="eyebrow">Where I work hardest</div>
     <h2>Three areas I know <em>street by street.</em></h2>
     <p>I cover all of Lane County, but these three are where I spend the most time, know the most people, and can tell you what a place is actually like instead of reading you the listing description.</p>
-    <div class="grid g3 mt">
-      ${ranked.map((l) => `<article class="card rank rv" data-rank="No. ${l.rank}"><a href="areas/${l.slug}/index.html"><img src="images/${IMG(l)}" alt="${esc(l.name)}, Lane County, Oregon" loading="lazy"></a>
-        <div class="card-b"><h3><a href="areas/${l.slug}/index.html">${esc(l.name)}</a></h3>
-        <p>${esc(l.tagline)}</p><span class="more">See ${esc(l.name)} →</span></div></article>`).join('\n')}
-    </div>
+    <div class="cta-row"><a class="btn" href="areas/index.html">Every area I cover</a><a class="btn ghost" href="tel:${PHONE_TEL}">Call or text ${PHONE}</a></div>
   </div>
   <div class="rv"><figure class="shot tall"><img src="images/brett-sign-install.jpg" alt="Brett Herring installing a for sale sign at a Lane County, Oregon listing"><figcaption>Brett Herring · ${TEAM} · ${BROKERAGE}</figcaption></figure></div>
+</div>
+<div class="wrap mt-l">
+  <div class="grid g3">
+    ${ranked.map((l) => `<article class="card rank rv" data-rank="No. ${l.rank}"><a href="areas/${l.slug}/index.html"><img src="images/${IMG(l)}" alt="${esc(l.name)}, Lane County, Oregon" loading="lazy"></a>
+      <div class="card-b"><h3><a href="areas/${l.slug}/index.html">${esc(l.name)}</a></h3>
+      <p>${esc(l.tagline)}</p><span class="more">See ${esc(l.name)} →</span></div></article>`).join('\n')}
+  </div>
 </div></section>
 
 <section class="bone2"><div class="wrap">
@@ -93,10 +96,9 @@ ${ticker(['Thurston', 'Pleasant Hill', 'Springfield', 'Rural & Acreage', 'First-
     <h2>Signs in the ground, <em>keys handed over.</em></h2>
     <p>Not stock photography. These are real closings and real sign days in Lane County.</p>
   </div>
-  <div class="photos">
+  <div class="photos two">
     <figure class="rv"><img src="images/brett-closing-key.jpg" alt="Brett Herring with clients on closing day at Cascade Title in Eugene, Oregon" loading="lazy" width="1500" height="2000"><figcaption>Closing day</figcaption></figure>
     <figure class="rv"><img src="images/brett-closing-homeowners.jpg" alt="Brett Herring with new homeowners holding a Cascade Title sign" loading="lazy" width="1500" height="2000"><figcaption>New homeowners</figcaption></figure>
-    <figure class="rv"><img src="images/brett-sign-subdivision.jpg" alt="Brett Herring beside a The Operative Group for sale sign at a Lane County listing" loading="lazy" width="2000" height="1500"><figcaption>Listing day</figcaption></figure>
   </div>
 </div></section>
 

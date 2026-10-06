@@ -1096,5 +1096,13 @@
   "artist": "Brett Herring",
   "source": "",
   "own": true
+ },
+ {
+  "file": "gen-pleasant-hill.jpg",
+  "title": "Acreage country, barn and pasture",
+  "license": "Illustration, AI-generated (Higgsfield Soul Location)",
+  "artist": "Commissioned for this site",
+  "source": "",
+  "generated": true
  }
 ]

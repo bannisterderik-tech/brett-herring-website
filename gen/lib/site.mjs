@@ -91,6 +91,11 @@ section{padding:clamp(2.8rem,5.5vw,4.6rem) 0;position:relative}
 @keyframes kb{from{transform:scale(1.1)}to{transform:scale(1)}}
 .hero::after{content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(11,11,12,.55) 0%,rgba(11,11,12,.2) 38%,rgba(11,11,12,.92) 100%)}
+/* second scrim from the left so the headline stays readable over a busy photo */
+.hero::before{content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(95deg,rgba(11,11,12,.8) 0%,rgba(11,11,12,.55) 38%,rgba(11,11,12,.12) 66%,transparent 85%)}
+/* keep Brett clear of the copy: favour the right of the frame */
+.hero-bg img{object-position:62% center}
 .hero-in{width:100%;padding:9rem 0 3.2rem;position:relative;z-index:2}
 .hero .eyebrow{color:rgba(255,255,255,.7)}
 .hero h1{color:#fff;margin:1rem 0 1.1rem;max-width:16ch}
@@ -290,6 +295,7 @@ footer a:hover{color:var(--green-l)}
 .eho{display:inline-block;width:13px;height:13px;vertical-align:-2px;margin-right:.25rem}
 
 /* ---- misc ---- */
+.mt-l{margin-top:clamp(2rem,4vw,3.2rem)}
 .sec-head{max-width:760px;margin-bottom:1.9rem}
 .sec-head h2{margin:.7rem 0 .85rem}
 .sec-head p{color:var(--ink2)}

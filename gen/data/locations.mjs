@@ -51,7 +51,7 @@ export const locations = [
     rank: 2,
     tagline: 'Acreage country, fifteen minutes from everything',
     zips: ['97455'],
-    img: 'pleasant-hill-2.jpg',
+    img: 'gen-pleasant-hill.jpg',
     heroImg: 'elijah-bristow-1.jpg',
     character: `Pleasant Hill is the answer for people who want land without giving up their life. It sits southeast of Springfield along Highway 58, close enough that a run to the store is not an expedition, far enough that your nearest neighbor might be across a field. There is no downtown to speak of. There is a school district that people genuinely move here for, a post office, and a lot of very good ground.`,
     landmarks: ['Elijah Bristow State Park', 'Dexter Reservoir', 'Lookout Point Lake', 'Middle Fork Willamette River', 'Pleasant Hill School District campus', 'Highway 58 corridor'],
