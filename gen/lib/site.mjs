@@ -11,6 +11,8 @@ export const EMAIL = 'brett@theoperativegroup.com';
 export const IG = 'https://www.instagram.com/youreugenerealtorbrett/';
 export const TEAM = 'The Operative Group';
 export const BROKERAGE = 'Real Broker, LLC';
+// Verified from Brett's own listing sign (photo: brett-sign-install.jpg).
+export const LICENSE = '201228460';
 
 export const esc = (s) => String(s)
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
@@ -112,6 +114,19 @@ section{padding:clamp(2.8rem,5.5vw,4.6rem) 0;position:relative}
 .crumbs a{color:#A7ABA6}
 .crumbs a:hover{color:var(--green-l)}
 .crumbs span{margin:0 .4rem;color:#4B4E4B}
+
+/* ---- real photo band ---- */
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.7rem,1.6vw,1.1rem)}
+.photos figure{margin:0;position:relative;overflow:hidden;border-radius:var(--r);background:#ddd}
+.photos img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.photos figure:hover img{transform:scale(1.035)}
+.photos figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.5rem .95rem .8rem;
+  font-family:var(--fm);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.72))}
+.photos.two{grid-template-columns:repeat(2,1fr)}
+.photos.two img{aspect-ratio:4/5}
+@media(max-width:760px){.photos{grid-template-columns:1fr 1fr}.photos figure:nth-child(3){grid-column:1/-1}.photos figure:nth-child(3) img{aspect-ratio:3/2}}
+@media(max-width:420px){.photos,.photos.two{grid-template-columns:1fr}.photos img{aspect-ratio:3/2}}
 
 /* ---- hero fact strip ---- */
 .facts{display:flex;flex-wrap:wrap;gap:0;margin-top:1.4rem;border-top:1px solid rgba(255,255,255,.16)}
@@ -420,7 +435,7 @@ ${body}
     <div class="foot-grid">
       <div>
         <div class="foot-brand"><img src="${R}images/brett.jpg" alt="Brett Herring" width="44" height="44"><b>Brett Herring</b></div>
-        <p>Real estate agent serving Springfield, Thurston, Pleasant Hill, Eugene, and all of Lane County, Oregon. ${TEAM} · ${BROKERAGE}.</p>
+        <p>Real estate agent serving Springfield, Thurston, Pleasant Hill, Eugene, and all of Lane County, Oregon. ${TEAM} · ${BROKERAGE}. Licensed in the State of Oregon, Lic. #${LICENSE}.</p>
         <p style="margin-top:.7rem"><a href="tel:${PHONE_TEL}">${PHONE}</a><a href="mailto:${EMAIL}">${EMAIL}</a><a href="${IG}" rel="noopener">Instagram — @youreugenerealtorbrett</a></p>
       </div>
       <div>

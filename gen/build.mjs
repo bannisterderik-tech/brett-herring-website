@@ -73,7 +73,7 @@ ${ticker(['Thurston', 'Pleasant Hill', 'Springfield', 'Rural & Acreage', 'First-
         <p>${esc(l.tagline)}</p><span class="more">See ${esc(l.name)} →</span></div></article>`).join('\n')}
     </div>
   </div>
-  <div class="rv"><figure class="shot tall"><img src="images/brett-full.jpg" alt="Brett Herring, real estate agent in Springfield, Oregon"><figcaption>Brett Herring · ${TEAM} · ${BROKERAGE}</figcaption></figure></div>
+  <div class="rv"><figure class="shot tall"><img src="images/brett-sign-install.jpg" alt="Brett Herring installing a for sale sign at a Lane County, Oregon listing"><figcaption>Brett Herring · ${TEAM} · ${BROKERAGE}</figcaption></figure></div>
 </div></section>
 
 <section class="bone2"><div class="wrap">
@@ -85,6 +85,18 @@ ${ticker(['Thurston', 'Pleasant Hill', 'Springfield', 'Rural & Acreage', 'First-
     ${services.map((s) => `<article class="card rv"><a href="services/${s.slug}/index.html"><img src="images/${s.img}" alt="${esc(s.name)} in Lane County, Oregon" loading="lazy"></a>
       <div class="card-b"><h3><a href="services/${s.slug}/index.html">${esc(s.short)}</a></h3>
       <p>${esc(trunc(s.heroLine, 92))}</p><span class="more">Read more →</span></div></article>`).join('\n')}
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head rv"><div class="eyebrow">The actual work</div>
+    <h2>Signs in the ground, <em>keys handed over.</em></h2>
+    <p>Not stock photography. These are real closings and real sign days in Lane County.</p>
+  </div>
+  <div class="photos">
+    <figure class="rv"><img src="images/brett-closing-key.jpg" alt="Brett Herring with clients on closing day at Cascade Title in Eugene, Oregon" loading="lazy" width="1500" height="2000"><figcaption>Closing day</figcaption></figure>
+    <figure class="rv"><img src="images/brett-closing-homeowners.jpg" alt="Brett Herring with new homeowners holding a Cascade Title sign" loading="lazy" width="1500" height="2000"><figcaption>New homeowners</figcaption></figure>
+    <figure class="rv"><img src="images/brett-sign-subdivision.jpg" alt="Brett Herring beside a The Operative Group for sale sign at a Lane County listing" loading="lazy" width="2000" height="1500"><figcaption>Listing day</figcaption></figure>
   </div>
 </div></section>
 
@@ -153,6 +165,16 @@ write('/about/', page({
 </div></section>
 
 <section class="bone2"><div class="wrap">
+  <div class="sec-head rv"><div class="eyebrow">Off the clock</div><h2>The rest of <em>it.</em></h2>
+  <p>Lifting, family, and a town I picked on purpose. Same three things that show up in how I work.</p></div>
+  <div class="photos">
+    <figure class="rv"><img src="../images/brett-family-meet.jpg" alt="Brett Herring with his family at a USPA powerlifting meet" loading="lazy" width="1350" height="1800"><figcaption>Meet day</figcaption></figure>
+    <figure class="rv"><img src="../images/brett-family-holiday.jpg" alt="Brett Herring at home with his family at the holidays" loading="lazy" width="1350" height="1800"><figcaption>The reason for the early mornings</figcaption></figure>
+    <figure class="rv"><img src="../images/brett-community.jpg" alt="Brett Herring out with friends and colleagues in Eugene, Oregon" loading="lazy" width="1500" height="2000"><figcaption>Out in Eugene</figcaption></figure>
+  </div>
+</div></section>
+
+<section><div class="wrap">
   <div class="sec-head rv"><div class="eyebrow">How I work</div><h2>Four things you can <em>count on.</em></h2></div>
   <div class="steps">
     <div class="step rv"><h3>You hear from me first</h3><p>You should never have to ask where your transaction stands. If something changed, you find out from me, not from a portal notification at ten at night.</p></div>
@@ -260,6 +282,15 @@ write('/sell/', page({
     <div class="step rv"><h3>Hold it together through inspection</h3><p>This is where most deals die. Sellers who prepared answer with paperwork. Sellers who did not negotiate against a report they are reading for the first time.</p></div>
   </div>
   <div class="center mt rv"><a class="btn big" href="tel:${PHONE_TEL}">Book a free walk-through</a></div>
+</div></section>
+
+<section class="bone2"><div class="wrap">
+  <div class="sec-head rv"><div class="eyebrow">And then the sign goes up</div><h2>I put them in <em>myself.</em></h2>
+  <p>Two Lane County listings, two sign days. It is a small thing, but it is the point where the work you did beforehand starts paying.</p></div>
+  <div class="photos two">
+    <figure class="rv"><img src="../images/brett-sign-install.jpg" alt="Brett Herring installing a for sale sign in the Pleasant Hill area of Lane County, Oregon" loading="lazy" width="1500" height="2000"><figcaption>Pleasant Hill area</figcaption></figure>
+    <figure class="rv"><img src="../images/brett-sign-subdivision.jpg" alt="Brett Herring beside a The Operative Group for sale sign at a Lane County listing" loading="lazy" width="2000" height="1500"><figcaption>Listing day</figcaption></figure>
+  </div>
 </div></section>
 ${faqBlock(services[1].faqs, 'Seller questions')}`,
 }));
